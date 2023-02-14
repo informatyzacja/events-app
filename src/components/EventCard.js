@@ -1,5 +1,4 @@
-import { Card, Text, Button, TouchableRipple } from "react-native-paper";
-import { useState, useEffect } from "react";
+import { Card, Text, TouchableRipple } from "react-native-paper";
 const EventCard = ({ item }) => {
   //TODO: Switch in later version from fake api call to AsyncStorage Call
   return (
