@@ -1,6 +1,7 @@
 import AppbarComponent from "../components/AppbarComponent";
-import { FlatList, View, Text } from "react-native";
+import { FlatList, View } from "react-native";
 import EventCard from "../components/EventCard";
+import styles from "../styles";
 // import { useState, useEffect } from "react";
 const EventList = () => {
   // TODO: Uncomment these when api will be available to use, think about using React Query
@@ -37,7 +38,7 @@ const EventList = () => {
   return (
     <>
       <AppbarComponent />
-      <View style={{ backgroundColor: "white" }}>
+      <View style={styles.eventListContainer}>
         <FlatList data={localData} renderItem={EventCard} />
       </View>
     </>

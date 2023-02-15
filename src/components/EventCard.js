@@ -1,4 +1,6 @@
 import { Card, Text, TouchableRipple } from "react-native-paper";
+// import theme from "../theme";
+import styles from "../styles";
 const EventCard = ({ item }) => {
   //TODO: Switch in later version from fake api call to AsyncStorage Call
   return (
@@ -6,14 +8,15 @@ const EventCard = ({ item }) => {
       onPress={() => console.log("Pressed")}
       rippleColor="rgba(0, 0, 0, .32)"
     >
-      <Card mode="elevated" style={{ margin: 10, backgroundColor: "white" }}>
+      <Card mode="elevated" style={styles.eventCard}>
         <Card.Cover source={{ uri: item.banerURL }} />
         <Card.Title
           title={item.name}
+          titleVariant="headlineSmall"
           subtitle={item.startDate}
-          variant="headlineMedium"
+          subtitleVariant="titleSmall"
         />
-        <Card.Content style={{ display: "flex", flexDirection: "row" }}>
+        <Card.Content>
           <Text>{item.description} </Text>
         </Card.Content>
       </Card>
