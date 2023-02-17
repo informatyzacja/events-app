@@ -5,13 +5,13 @@ import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { name as appName } from "./app.json";
 import EventList from "./src/routes/EventsList";
 import theme from "./src/theme";
-import styles from "./src/styles";
+import generalStyles from "./src/styles/generalStyles";
 import EventDetails from "./src/routes/EventDetails";
 export default function Main() {
   const Stack = createNativeStackNavigator();
   return (
     <PaperProvider theme={theme}>
-      <SafeAreaView style={styles.safeAreaContainer}>
+      <SafeAreaView style={generalStyles.safeAreaContainer}>
         <NavigationContainer>
           <Stack.Navigator initialRouteName="EventsList">
             <Stack.Screen

@@ -1,28 +1,18 @@
 import { View } from "react-native";
 import { Text } from "react-native-paper";
-import SubEventCardRow from "./SubEventCardRow";
+import CardRow from "./CardRow";
 import theme from "../theme";
-
+import subEventContainerStyles from "../styles/subEventContainerStyles";
 const SubEventCard = ({ subEvent, navigation }) => {
   const startDateSplitted = subEvent.startDate.split(" ");
   return (
-    <View
-      style={{
-        flex: 1,
-        backgroundColor: theme.colors.surfaceVariant,
-        margin: 10,
-        borderRadius: 10,
-        flexDirection: "row",
-        justifyContent: "space-around",
-        padding: 10,
-      }}
-    >
-      <View style={{ flex: 1, alignSelf: "center", paddingLeft: 5 }}>
+    <View style={subEventContainerStyles.cardContainer}>
+      <View style={subEventContainerStyles.titleContainer}>
         <Text variant="titleMedium">{subEvent.name}</Text>
       </View>
-      <View style={{ flex: 1, flexDirection: "column", alignSelf: "flex-end" }}>
-        <SubEventCardRow icon={"calendar"} text={startDateSplitted[0]} />
-        <SubEventCardRow icon={"clock"} text={startDateSplitted[1]} />
+      <View style={subEventContainerStyles.timeContainer}>
+        <CardRow icon={"calendar"} text={startDateSplitted[0]} />
+        <CardRow icon={"clock"} text={startDateSplitted[1]} />
       </View>
     </View>
   );

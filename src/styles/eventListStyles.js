@@ -1,9 +1,6 @@
 import { StyleSheet } from "react-native";
 
-const styles = StyleSheet.create({
-  safeAreaContainer: {
-    flex: 1,
-  },
+const eventListStyles = StyleSheet.create({
   eventListContainer: {
     flex: 1,
   },
@@ -12,4 +9,4 @@ const styles = StyleSheet.create({
     backgroundColor: "white",
   },
 });
-export default styles;
+export default eventListStyles;
