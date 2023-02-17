@@ -3,24 +3,38 @@
         "id": 1,
         "name": "example",
         "banerURL": "https://picsum.photos/100/100",
-        "description": "example description example descriptionexample descriptionexample descriptionexample descriptionexample descriptionW",
+        "description": "example description example descriptionexample descriptionexample descriptionexample descriptionexample description",
         "place": "C-13",
-        "startDate": "2022.08.10",
-        "endDate": "2922.08.11",
+        "startDate": "2022-08-10",
+        "endDate": "2922-08-11",
         "subEvents": [
           {
             "id": 1,
             "name": "example subevent1",
             "place": "Przystań piracka",
-            "startDate": "2022.08.10 13:32:00",
-            "endDate": "2922.08.11 14:20:00"
+            "startDate": "2022-08-10 13:32:00",
+            "endDate": "2922-08-11 14:20:00"
           },
           {
             "id": 2,
             "name": "example subevent2",
             "place": "karczma",
-            "startDate": "2022.08.10 13:32:00",
-            "endDate": "2922.08.11 14:20:00"
+            "startDate": "2022-08-10 13:32:00",
+            "endDate": "2922-08-11 14:20:00"
+          },
+          {
+            "id": 3,
+            "name": "example subevent2",
+            "place": "karczma",
+            "startDate": "2022-08-10 13:32:00",
+            "endDate": "2922-08-11 14:20:00"
+          },
+          {
+            "id": 4,
+            "name": "example subevent2",
+            "place": "karczma",
+            "startDate": "2022-08-10 13:32:00",
+            "endDate": "2922-08-11 14:20:00"
           }
         ]
     },
@@ -30,22 +44,22 @@
         "banerURL": "https://picsum.photos/100/100",
         "description": "example description v2",
         "place": "C-13",
-        "startDate": "2022.08.10",
-        "endDate": "2922.08.11",
+        "startDate": "2022-08-10",
+        "endDate": "2922-08-11",
         "subEvents": [
           {
             "id": 3,
             "name": "example subevent3 45",
             "place": "Przystań piracka",
-            "startDate": "2022.08.10 13:32:00",
-            "endDate": "2922.08.11 14:20:00"
+            "startDate": "2022-08-10 13:32:00",
+            "endDate": "2922-08-11 14:20:00"
           },
           {
             "id": 4,
             "name": "example subevent4",
             "place": "karczma",
-            "startDate": "2022.08.10 13:32:00",
-            "endDate": "2922.08.11 14:20:00"
+            "startDate": "2022-08-10 13:32:00",
+            "endDate": "2922-08-11 14:20:00"
           }
         ]
     },
@@ -55,22 +69,22 @@
         "banerURL": "https://picsum.photos/100/100",
         "description": "example description",
         "place": "C-13",
-        "startDate": "2022.08.10",
-        "endDate": "2922.08.11",
+        "startDate": "2022-08-10",
+        "endDate": "2922-08-11",
         "subEvents": [
           {
             "id": 1,
             "name": "example subevent1",
             "place": "Przystań piracka",
-            "startDate": "2022.08.10 13:32:00",
-            "endDate": "2922.08.11 14:20:00"
+            "startDate": "2022-08-10 13:32:00",
+            "endDate": "2922-08-11 14:20:00"
           },
           {
             "id": 2,
             "name": "example subevent2",
             "place": "karczma",
-            "startDate": "2022.08.10 13:32:00",
-            "endDate": "2922.08.11 14:20:00"
+            "startDate": "2022-08-10 13:32:00",
+            "endDate": "2922-08-11 14:20:00"
           }
         ]
     },
@@ -80,22 +94,22 @@
         "banerURL": "https://picsum.photos/100/100",
         "description": "example description",
         "place": "C-13",
-        "startDate": "2022.08.10",
-        "endDate": "2922.08.11",
+        "startDate": "2022-08-10",
+        "endDate": "2922-08-11",
         "subEvents": [
           {
             "id": 1,
             "name": "example subevent1",
             "place": "Przystań piracka",
-            "startDate": "2022.08.10 13:32:00",
-            "endDate": "2922.08.11 14:20:00"
+            "startDate": "2022-08-10 13:32:00",
+            "endDate": "2922-08-11 14:20:00"
           },
           {
             "id": 2,
             "name": "example subevent2",
             "place": "karczma",
-            "startDate": "2022.08.10 13:32:00",
-            "endDate": "2922.08.11 14:20:00"
+            "startDate": "2022-08-10 13:32:00",
+            "endDate": "2922-08-11 14:20:00"
           }
         ]
     }

@@ -3,7 +3,7 @@ import { FlatList, View } from "react-native";
 import EventCard from "../components/EventCard";
 import styles from "../styles";
 // import { useState, useEffect } from "react";
-const EventList = () => {
+const EventList = ({ navigation }) => {
   // TODO: Uncomment these when api will be available to use, think about using React Query
   // const [localData, setLocalData] = useState([]);
   // const [isLoading, setIsLoading] = useState(true);
@@ -39,7 +39,12 @@ const EventList = () => {
     <>
       <AppbarComponent />
       <View style={styles.eventListContainer}>
-        <FlatList data={localData} renderItem={EventCard} />
+        <FlatList
+          data={localData}
+          renderItem={({ item }) => (
+            <EventCard item={item} navigation={navigation} />
+          )}
+        />
       </View>
     </>
   );
