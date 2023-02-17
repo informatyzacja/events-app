@@ -5,13 +5,13 @@ import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { name as appName } from "./app.json";
 import EventList from "./src/routes/EventsList";
 import theme from "./src/theme";
-import generalStyles from "./src/styles/generalStyles";
 import EventDetails from "./src/routes/EventDetails";
+import { StyleSheet } from "react-native";
 export default function Main() {
   const Stack = createNativeStackNavigator();
   return (
     <PaperProvider theme={theme}>
-      <SafeAreaView style={generalStyles.safeAreaContainer}>
+      <SafeAreaView style={styles.safeAreaContainer}>
         <NavigationContainer>
           <Stack.Navigator initialRouteName="EventsList">
             <Stack.Screen
@@ -21,12 +21,12 @@ export default function Main() {
             />
             <Stack.Screen
               name="EventDetails"
-              options={{
-                title: "",
+              options={({ route }) => ({
+                title: route.params.name,
                 headerStyle: {
                   backgroundColor: theme.colors.primaryContainer,
                 },
-              }}
+              })}
               component={EventDetails}
             />
           </Stack.Navigator>
@@ -35,5 +35,9 @@ export default function Main() {
     </PaperProvider>
   );
 }
-
+const styles = StyleSheet.create({
+  safeAreaContainer: {
+    flex: 1,
+  },
+});
 AppRegistry.registerComponent(appName, () => Main);

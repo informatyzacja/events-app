@@ -1,7 +1,6 @@
 import AppbarComponent from "../components/AppbarComponent";
-import { FlatList, View } from "react-native";
+import { FlatList, StyleSheet, View } from "react-native";
 import EventCard from "../components/EventCard";
-import eventListStyles from "../styles/eventListStyles";
 // import { useState, useEffect } from "react";
 const EventList = ({ navigation }) => {
   // TODO: Uncomment these when api will be available to use, think about using React Query
@@ -38,7 +37,7 @@ const EventList = ({ navigation }) => {
   return (
     <>
       <AppbarComponent />
-      <View style={eventListStyles.eventListContainer}>
+      <View style={styles.eventListContainer}>
         <FlatList
           data={localData}
           renderItem={({ item }) => (
@@ -49,4 +48,9 @@ const EventList = ({ navigation }) => {
     </>
   );
 };
+const styles = StyleSheet.create({
+  eventListContainer: {
+    flex: 1,
+  },
+});
 export default EventList;

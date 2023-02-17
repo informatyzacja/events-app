@@ -1,10 +1,9 @@
 import { Avatar, Text } from "react-native-paper";
-import { View } from "react-native";
+import { StyleSheet, View } from "react-native";
 import theme from "../theme";
-import eventDetailsStyles from "../styles/eventDetailsStyles";
 const CardRow = ({ icon, text }) => {
   return (
-    <View style={eventDetailsStyles.cardRowContainer}>
+    <View style={styles.cardRowContainer}>
       <Avatar.Icon
         color={theme.colors.onSurfaceVariant}
         style={{ backgroundColor: "transparent" }}
@@ -15,4 +14,7 @@ const CardRow = ({ icon, text }) => {
     </View>
   );
 };
+const styles = StyleSheet.create({
+  cardRowContainer: { flex: 1, flexDirection: "row" },
+});
 export default CardRow;
