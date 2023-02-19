@@ -1,6 +1,6 @@
 import { Appbar, useTheme } from "react-native-paper";
 
-const AppbarComponent = () => {
+const AppbarComponent = ({ title, navigation }) => {
   const { colors } = useTheme();
   return (
     <Appbar.Header
@@ -8,7 +8,7 @@ const AppbarComponent = () => {
       style={{ backgroundColor: colors.primaryContainer }}
     >
       <Appbar.Action icon="menu" onPress={() => {}} />
-      <Appbar.Content title="Wydarzenia" />
+      <Appbar.Content title={title} />
       <Appbar.Action icon="cog" onPress={() => {}} />
     </Appbar.Header>
   );
