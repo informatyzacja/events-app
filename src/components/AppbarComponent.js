@@ -7,9 +7,7 @@ const AppbarComponent = ({ title, navigation }) => {
       mode="center-aligned"
       style={{ backgroundColor: colors.primaryContainer }}
     >
-      <Appbar.Action icon="menu" onPress={() => {}} />
       <Appbar.Content title={title} />
-      <Appbar.Action icon="cog" onPress={() => {}} />
     </Appbar.Header>
   );
 };

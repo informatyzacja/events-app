@@ -23,8 +23,14 @@ const EventDetails = ({ route, navigation }) => {
           </Text>
         </View>
         <Text variant="titleLarge">Harmonogram</Text>
-        {eventData.subEvents.map((subEvent) => {
-          return <SubEventCard subEvent={subEvent} navigation={navigation} />;
+        {eventData.subEvents.map((subEvent, index) => {
+          return (
+            <SubEventCard
+              key={index}
+              subEvent={subEvent}
+              navigation={navigation}
+            />
+          );
         })}
       </View>
     </ScrollView>

@@ -1,5 +1,5 @@
 import AppbarComponent from "../components/AppbarComponent";
-import { View } from "react-native";
+import { View, StyleSheet, FlatList } from "react-native";
 import EventCard from "../components/EventCard";
 import { useState, useEffect } from "react";
 import AsyncStorage from "@react-native-async-storage/async-storage";
@@ -34,4 +34,9 @@ const SubscribedEventsList = ({ navigation }) => {
     </>
   );
 };
+const styles = StyleSheet.create({
+  eventListContainer: {
+    flex: 1,
+  },
+});
 export default SubscribedEventsList;
