@@ -5,7 +5,7 @@ import { name as appName } from "./app.json";
 import theme from "./src/theme";
 import { StyleSheet } from "react-native";
 import Navbar from "./src/routes/Navbar";
-import { QueryClient, QueryClientProvider } from "react-query";
+import { QueryClient } from "@tanstack/react-query";
 import { PersistQueryClientProvider } from "@tanstack/react-query-persist-client";
 import { createAsyncStoragePersister } from "@tanstack/query-async-storage-persister";
 import AsyncStorage from "@react-native-async-storage/async-storage";
@@ -13,7 +13,9 @@ import AsyncStorage from "@react-native-async-storage/async-storage";
 const queryClient = new QueryClient({
   defaultOptions: {
     queries: {
-      cacheTime: 1000 * 60 * 60 * 24, // 24 hours
+      cacheTime: 1000 * 60 * 60 * 24, // 24 hours,
+      staleTime: 2000,
+      retry: 0,
     },
   },
 });
@@ -24,17 +26,15 @@ export default function Main() {
   return (
     <PersistQueryClientProvider
       client={queryClient}
-      persistOptions={asyncStoragePersister}
+      persistOptions={{ persister: asyncStoragePersister }}
     >
-      <QueryClientProvider client={queryClient}>
-        <PaperProvider theme={theme}>
-          <SafeAreaView style={styles.safeAreaContainer}>
-            <NavigationContainer>
-              <Navbar />
-            </NavigationContainer>
-          </SafeAreaView>
-        </PaperProvider>
-      </QueryClientProvider>
+      <PaperProvider theme={theme}>
+        <SafeAreaView style={styles.safeAreaContainer}>
+          <NavigationContainer>
+            <Navbar />
+          </NavigationContainer>
+        </SafeAreaView>
+      </PaperProvider>
     </PersistQueryClientProvider>
   );
 }

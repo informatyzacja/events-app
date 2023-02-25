@@ -1,14 +1,9 @@
-import { useQuery } from "react-query";
+import { useQuery } from "@tanstack/react-query";
 
 export const useEvents = () => {
   const fetchAPI = async () => {
-    try {
-      const data = require("../dummy_data.json");
-      return data;
-    } catch (error) {
-      console.log(error);
-    }
+    const data = require("../dummy_data.json");
+    return data;
   };
-  const { data, isLoading, error } = useQuery("events", fetchAPI);
-  return { data, isLoading, error };
+  return useQuery({ queryKey: ["events"], queryFn: fetchAPI });
 };

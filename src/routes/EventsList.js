@@ -9,12 +9,11 @@ const EventList = ({ navigation }) => {
     <>
       <AppbarComponent title={"Wydarzenia"} navigation={navigation} />
 
-      {isLoading == true && (
+      {isLoading === true ? (
         <View style={styles.loadingElementsContainer}>
           <Text variant="headlineSmall">Wczytuję dane</Text>
         </View>
-      )}
-      {isLoading == false && (
+      ) : isLoading === false && error === null ? (
         <View style={styles.eventListContainer}>
           <FlatList
             data={data}
@@ -23,8 +22,11 @@ const EventList = ({ navigation }) => {
             )}
           />
         </View>
+      ) : (
+        <View style={styles.loadingElementsContainer}>
+          <Text variant="headlineSmall">Wystąpił nieoczekiwany błąd</Text>
+        </View>
       )}
-      {error}
     </>
   );
 };
