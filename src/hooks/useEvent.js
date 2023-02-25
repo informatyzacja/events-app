@@ -12,7 +12,6 @@ const useEvents = () => {
         await AsyncStorage.getItem("expirationDate")
       );
       if (lastFetched === null || lastFetched["date"] < cacheExpiryTime) {
-        console.log("Retrieve data from API");
         const data = require("../dummy_data.json");
         AsyncStorage.setItem("fetchedEvents", JSON.stringify(data));
         AsyncStorage.setItem(
@@ -21,7 +20,6 @@ const useEvents = () => {
         );
         setLocalData(data);
       } else {
-        console.log("Read data from storage");
         const data = await AsyncStorage.getItem("fetchedEvents");
         setLocalData(JSON.parse(data));
       }

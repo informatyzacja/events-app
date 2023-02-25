@@ -1,42 +1,26 @@
 import { useState, useEffect } from "react";
 import AsyncStorage from "@react-native-async-storage/async-storage";
-const useSubscribedEvents = () => {
-  const key = "Subscribed";
-  const [localData, setLocalData] = useState([]);
+import { subscribedEventsAtom } from "../atoms/subscribedEvents";
+import { useAtom } from "jotai";
 
-  const subscribe = async (event) => {
-    setLocalData([...localData, event]);
-    await AsyncStorage.setItem(key, JSON.stringify(localData));
+export const useSubscribedEvents = () => {
+  const [subscribedEvents, setSubscribedEvents] = useAtom(subscribedEventsAtom);
+
+  const subscribe = (event) => {
+    const newSubscribedEvents = [...subscribedEvents, event];
+    setSubscribedEvents(newSubscribedEvents);
   };
 
-  const unSubscribe = async (event) => {
-    const updatedData = localData.filter((item) => item.id !== event.id);
-    setLocalData(updatedData);
-    await AsyncStorage.setItem(key, JSON.stringify(updatedData));
+  const unSubscribe = (event) => {
+    const newSubscribedEvents = subscribedEvents.filter(
+      (item) => item.id !== event.id
+    );
+    setSubscribedEvents(newSubscribedEvents);
   };
-
-  const fetchStorage = async () => {
-    try {
-      console.log("Retrieve data from storage");
-      const data = JSON.parse(await AsyncStorage.getItem(key));
-      console.log(` Po retrieve z fetchStorage ${data}`);
-      if (data) {
-        setLocalData(data);
-      }
-    } catch (error) {
-      console.log(error);
-    }
-  };
-
-  useEffect(() => {
-    fetchStorage();
-  }, []);
 
   return {
-    subscribedEvents: localData,
+    subscribedEvents,
     addEvent: subscribe,
     removeEvent: unSubscribe,
   };
 };
-
-export default useSubscribedEvents;
