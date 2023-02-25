@@ -1,35 +1,14 @@
-import { useState, useEffect } from "react";
-import AsyncStorage from "@react-native-async-storage/async-storage";
+import { useQuery } from "react-query";
 
-const useEvents = () => {
-  // TODO: think about using React Query
-  const [localData, setLocalData] = useState([]);
+export const useEvents = () => {
   const fetchAPI = async () => {
-    const cacheExpiryTime = new Date();
-    cacheExpiryTime.setDate(cacheExpiryTime.getDate() + 1);
     try {
-      const lastFetched = JSON.parse(
-        await AsyncStorage.getItem("expirationDate")
-      );
-      if (lastFetched === null || lastFetched["date"] < cacheExpiryTime) {
-        const data = require("../dummy_data.json");
-        AsyncStorage.setItem("fetchedEvents", JSON.stringify(data));
-        AsyncStorage.setItem(
-          "expirationDate",
-          JSON.stringify({ date: new Date() })
-        );
-        setLocalData(data);
-      } else {
-        const data = await AsyncStorage.getItem("fetchedEvents");
-        setLocalData(JSON.parse(data));
-      }
+      const data = require("../dummy_data.json");
+      return data;
     } catch (error) {
       console.log(error);
     }
   };
-  useEffect(() => {
-    fetchAPI();
-  }, []);
-  return { events: localData };
+  const { data, isLoading, error } = useQuery("events", fetchAPI);
+  return { data, isLoading, error };
 };
-export default useEvents;

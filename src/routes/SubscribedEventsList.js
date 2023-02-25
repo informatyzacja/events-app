@@ -1,26 +1,9 @@
 import AppbarComponent from "../components/AppbarComponent";
 import { View, StyleSheet, FlatList } from "react-native";
 import EventCard from "../components/EventCard";
-import { useState, useEffect } from "react";
-import AsyncStorage from "@react-native-async-storage/async-storage";
-import useSubscribedEvents from "../hooks/useSubscribedEvents";
+import { useSubscribedEvents } from "../hooks/useSubscribedEvents";
 const SubscribedEventsList = ({ navigation }) => {
   const { subscribedEvents } = useSubscribedEvents();
-  // const [localData, setLocalData] = useState([]);
-  // const fetchData = async () => {
-  //   try {
-  //     console.log("Retrieve data from storage");
-  //     const data = JSON.parse(await AsyncStorage.getItem("Subscribed"));
-  //     if (data) {
-  //       setLocalData(data);
-  //     }
-  //   } catch (error) {
-  //     console.log(error);
-  //   }
-  // };
-  // useEffect(() => {
-  //   fetchData();
-  // }, []);
 
   return (
     <>

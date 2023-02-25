@@ -1,27 +1,41 @@
 import AppbarComponent from "../components/AppbarComponent";
 import { FlatList, StyleSheet, View } from "react-native";
+import { Text } from "react-native-paper";
 import EventCard from "../components/EventCard";
-import useEvents from "../hooks/useEvent";
+import { useEvents } from "../hooks/useEvent";
 const EventList = ({ navigation }) => {
-  const { events } = useEvents();
-
+  const { data, isLoading, error } = useEvents();
   return (
     <>
       <AppbarComponent title={"Wydarzenia"} navigation={navigation} />
-      <View style={styles.eventListContainer}>
-        <FlatList
-          data={events}
-          renderItem={({ item }) => (
-            <EventCard item={item} navigation={navigation} />
-          )}
-        />
-      </View>
+
+      {isLoading == true && (
+        <View style={styles.loadingElementsContainer}>
+          <Text variant="headlineSmall">Wczytuję dane</Text>
+        </View>
+      )}
+      {isLoading == false && (
+        <View style={styles.eventListContainer}>
+          <FlatList
+            data={data}
+            renderItem={({ item }) => (
+              <EventCard item={item} navigation={navigation} />
+            )}
+          />
+        </View>
+      )}
+      {error}
     </>
   );
 };
 const styles = StyleSheet.create({
   eventListContainer: {
     flex: 1,
+  },
+  loadingElementsContainer: {
+    flex: 1,
+    justifyContent: "center",
+    alignItems: "center",
   },
 });
 export default EventList;

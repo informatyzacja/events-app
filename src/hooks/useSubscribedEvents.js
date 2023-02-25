@@ -1,5 +1,3 @@
-import { useState, useEffect } from "react";
-import AsyncStorage from "@react-native-async-storage/async-storage";
 import { subscribedEventsAtom } from "../atoms/subscribedEvents";
 import { useAtom } from "jotai";
 
@@ -19,7 +17,7 @@ export const useSubscribedEvents = () => {
   };
 
   return {
-    subscribedEvents,
+    subscribedEvents: subscribedEvents,
     addEvent: subscribe,
     removeEvent: unSubscribe,
   };
