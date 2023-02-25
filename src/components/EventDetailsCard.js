@@ -3,31 +3,28 @@ import theme from "../theme";
 import CardRow from "./CardRow";
 import SubscribeButton from "./SubscribeButton";
 import { useState, useEffect } from "react";
-import AsyncStorage from "@react-native-async-storage/async-storage";
+// import AsyncStorage from "@react-native-async-storage/async-storage";
+import useSubscribedEvents from "../hooks/useSubscribedEvents";
 const EventDetailsCard = ({ eventData }) => {
   const [icon, setIcon] = useState("cards-heart-outline");
   const storageKey = "Subscribed";
-
+  const { subscribedEvents, addEvent, removeEvent } = useSubscribedEvents();
   const handleOnClick = async () => {
     try {
-      const subscribedItems = JSON.parse(
-        await AsyncStorage.getItem(storageKey)
-      );
-      if (subscribedItems === null) {
-        AsyncStorage.setItem("Subscribed", JSON.stringify([eventData]));
+      if (subscribedEvents === null) {
+        addEvent(eventData);
         setIcon("cards-heart");
       } else {
-        const indexToRemove = subscribedItems.findIndex(
+        const indexToRemove = subscribedEvents.findIndex(
           (item) => item.id === eventData.id
         );
         if (indexToRemove === -1) {
-          subscribedItems.push(eventData);
+          addEvent(eventData);
           setIcon("cards-heart");
         } else {
-          subscribedItems.splice(indexToRemove, 1);
+          removeEvent(eventData);
           setIcon("cards-heart-outline");
         }
-        AsyncStorage.setItem(storageKey, JSON.stringify(subscribedItems));
       }
     } catch (error) {
       console.error(error);
@@ -35,12 +32,9 @@ const EventDetailsCard = ({ eventData }) => {
   };
   const checkIfSubscribed = async () => {
     try {
-      const subscribedItems = JSON.parse(
-        await AsyncStorage.getItem(storageKey)
-      );
-      console.log(subscribedItems);
-      if (subscribedItems !== null) {
-        const index = subscribedItems.findIndex(
+      console.log(subscribedEvents);
+      if (subscribedEvents !== null) {
+        const index = subscribedEvents.findIndex(
           (item) => item.id === eventData.id
         );
         if (index !== -1) {
@@ -50,8 +44,9 @@ const EventDetailsCard = ({ eventData }) => {
     } catch (error) {
       console.error(error);
     }
+    console.log(icon);
   };
-
+  console.log(subscribedEvents);
   useEffect(() => {
     checkIfSubscribed();
   }, []);
