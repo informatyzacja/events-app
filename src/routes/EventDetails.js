@@ -23,10 +23,10 @@ const EventDetails = ({ route, navigation }) => {
           </Text>
         </View>
         <Text variant="titleLarge">Harmonogram</Text>
-        {eventData.subEvents.map((subEvent, index) => {
+        {eventData.subEvents.map((subEvent) => {
           return (
             <SubEventCard
-              key={index}
+              key={subEvent.id}
               subEvent={subEvent}
               navigation={navigation}
             />

@@ -5,9 +5,10 @@ import SubscribedEventsList from "./SubscribedEventsList";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import { createMaterialBottomTabNavigator } from "@react-navigation/material-bottom-tabs";
 import theme from "../theme";
-const EventsNavigator = () => {
-  const Stack = createNativeStackNavigator();
+const Stack = createNativeStackNavigator();
+const Tab = createMaterialBottomTabNavigator();
 
+const EventsNavigator = () => {
   return (
     <Stack.Navigator>
       <Stack.Screen
@@ -29,7 +30,6 @@ const EventsNavigator = () => {
   );
 };
 const SubscribedEventsNavigator = () => {
-  const Stack = createNativeStackNavigator();
   return (
     <Stack.Navigator>
       <Stack.Screen
@@ -52,8 +52,6 @@ const SubscribedEventsNavigator = () => {
 };
 
 const Navbar = () => {
-  const Tab = createMaterialBottomTabNavigator();
-
   return (
     <Tab.Navigator
       screenOptions={{
