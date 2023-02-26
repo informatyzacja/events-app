@@ -2,7 +2,23 @@ import { StyleSheet, View } from "react-native";
 import theme from "../theme";
 import CardRow from "./CardRow";
 import SubscribeButton from "./SubscribeButton";
+import { useState, useEffect } from "react";
+import { useSubscribedEvents } from "../hooks/useSubscribedEvents";
+import { useIsSubscribed } from "../hooks/useIsSubscribed";
+
 const EventDetailsCard = ({ eventData }) => {
+  const isSubscribed = useIsSubscribed(eventData);
+  const { addEvent, removeEvent } = useSubscribedEvents();
+
+  const handleOnClick = async () => {
+    if (isSubscribed) {
+      removeEvent(eventData);
+    }
+    if (!isSubscribed) {
+      addEvent(eventData);
+    }
+  };
+
   return (
     <View style={styles.detailsCardContainer}>
       <View style={styles.wrapper}>
@@ -13,11 +29,15 @@ const EventDetailsCard = ({ eventData }) => {
         <CardRow icon={"map-marker"} text={eventData.place} />
       </View>
       <View style={styles.buttonContainer}>
-        <SubscribeButton icon={"cards-heart-outline"} onPress={() => {}} />
+        <SubscribeButton
+          icon={isSubscribed ? "cards-heart" : "cards-heart-outline"}
+          onPress={handleOnClick}
+        />
       </View>
     </View>
   );
 };
+
 const styles = StyleSheet.create({
   detailsCardContainer: {
     borderRadius: 10,
@@ -33,4 +53,5 @@ const styles = StyleSheet.create({
     alignSelf: "center",
   },
 });
+
 export default EventDetailsCard;
