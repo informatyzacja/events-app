@@ -12,7 +12,8 @@
       "backgroundColor": "#ffffff"
     },
     "updates": {
-      "fallbackToCacheTimeout": 0
+      "fallbackToCacheTimeout": 0,
+      "url": "https://u.expo.dev/50c62d7b-3de5-42f7-b6de-e05c450992f8"
     },
     "assetBundlePatterns": ["**/*"],
     "ios": {
@@ -34,6 +35,9 @@
         "projectId": "50c62d7b-3de5-42f7-b6de-e05c450992f8"
       }
     },
-    "owner": "informatyzacja"
+    "owner": "informatyzacja",
+    "runtimeVersion": {
+      "policy": "sdkVersion"
+    }
   }
 }
