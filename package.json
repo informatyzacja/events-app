@@ -7,7 +7,7 @@
     "packages/*"
   ],
   "scripts": {
-    "build": "turbo build",
+    "build": "dotenv -- turbo build",
     "clean": "rm -rf node_modules",
     "clean:workspaces": "turbo clean",
     "db:generate": "turbo db:generate",
