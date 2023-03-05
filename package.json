@@ -1,35 +1,77 @@
 {
   "name": "events-app",
-  "version": "1.0.0",
-  "main": "node_modules/expo/AppEntry.js",
+  "version": "0.1.0",
+  "private": true,
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ],
   "scripts": {
-    "start": "expo start",
-    "android": "expo start --android",
-    "ios": "expo start --ios",
-    "web": "expo start --web"
+    "build": "dotenv -- turbo build",
+    "build:android": "dotenv -- turbo build:android",
+    "clean": "rm -rf node_modules",
+    "clean:workspaces": "turbo clean",
+    "db:generate": "turbo db:generate",
+    "db:push": "dotenv -- turbo db:push db:generate",
+    "dev": "dotenv -- turbo dev --parallel --filter=!expo",
+    "dev:mobile": "cd apps/expo && npm run dev",
+    "format": "prettier --write \"**/*.{js,cjs,mjs,ts,tsx,md,json}\" --ignore-path .gitignore",
+    "format:check": "prettier --ignore-unknown --check",
+    "prepare": "npx husky install",
+    "lint": "dotenv -- turbo lint",
+    "lint:fix": "dotenv -- turbo lint:fix",
+    "type-check": "turbo type-check"
   },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/informatyzacja/events-app.git"
+  },
+  "author": {
+    "name": "Michał Korczak",
+    "url": "https://omikor.in"
+  },
+  "maintainers": [
+    {
+      "name": "Michał Korczak",
+      "url": "https://omikor.in"
+    },
+    {
+      "name": "Damian Raczkowski"
+    },
+    {
+      "name": "Bartosz Gotowski"
+    }
+  ],
+  "bugs": {
+    "url": "https://github.com/informatyzacja/events-app/issues"
+  },
+  "homepage": "https://github.com/informatyzacja/events-app#readme",
   "dependencies": {
-    "@react-native-async-storage/async-storage": "~1.17.3",
-    "@react-native-community/netinfo": "^9.3.5",
-    "@react-navigation/material-bottom-tabs": "^6.2.13",
-    "@react-navigation/native": "^6.1.4",
-    "@react-navigation/native-stack": "^6.9.10",
-    "@tanstack/query-async-storage-persister": "^4.24.10",
-    "@tanstack/react-query": "^4.24.10",
-    "@tanstack/react-query-persist-client": "^4.24.10",
-    "expo": "~47.0.12",
-    "expo-status-bar": "~1.4.2",
-    "jotai": "^2.0.2",
-    "react": "18.1.0",
-    "react-native": "0.70.5",
-    "react-native-paper": "^5.2.0",
-    "react-native-safe-area-context": "4.4.1",
-    "react-native-screens": "~3.18.0"
-  },
-  "devDependencies": {
-    "@babel/core": "^7.12.9",
+    "@ianvs/prettier-plugin-sort-imports": "^3.7.1",
+    "@types/node": "^18.14.1",
+    "@types/prettier": "^2.7.2",
+    "@typescript-eslint/eslint-plugin": "^5.53.0",
+    "@typescript-eslint/parser": "^5.53.0",
+    "dotenv-cli": "^7.0.0",
     "eslint": "^8.34.0",
-    "prettier": "2.8.4"
+    "eslint-config-next": "^13.2.1",
+    "husky": "^8.0.0",
+    "lint-staged": "^13.1.2",
+    "prettier": "^2.8.4",
+    "turbo": "^1.8.2",
+    "typescript": "^4.9.5"
   },
-  "private": true
+  "ct3aMetadata": {
+    "initVersion": "7.5.1"
+  },
+  "engines": {
+    "node": ">=16.0.0"
+  },
+  "lint-staged": {
+    "*.{js,jsx,ts,tsx}": [
+      "prettier --write --ignore-unknown",
+      "eslint --fix"
+    ],
+    "*": "prettier --write --ignore-unknown"
+  }
 }

@@ -1,0 +1,64 @@
+{
+  "$schema": "https://turborepo.org/schema.json",
+  "globalDependencies": ["**/.env"],
+  "pipeline": {
+    "db:generate": {
+      "inputs": ["prisma/schema.prisma"],
+      "cache": false
+    },
+    "db:push": {
+      "inputs": ["prisma/schema.prisma"],
+      "cache": false
+    },
+    "dev": {
+      "dependsOn": ["^db:generate"],
+      "persistent": true,
+      "cache": false
+    },
+    "build": {
+      "dependsOn": ["^build", "^db:generate"],
+      "outputs": [".next/**", ".expo/**"]
+    },
+    "build:android": {
+      "inputs": [
+        "**/*.ts",
+        "**/*.tsx",
+        "**/*.js",
+        "**/*.jsx",
+        "app.json",
+        "eas.json"
+      ],
+      "outputs": ["android-build.apk"]
+    },
+    "lint": {
+      "inputs": ["**/*.ts", "**/*.tsx", "**/*.js", "**/*.jsx"]
+    },
+    "lint:fix": {
+      "inputs": ["**/*.ts", "**/*.tsx", "**/*.js", "**/*.jsx"]
+    },
+    "clean": {
+      "cache": false
+    },
+    "//#clean": {
+      "cache": false
+    },
+    "type-check": {
+      "dependsOn": ["^db:generate"]
+    }
+  },
+  "globalEnv": [
+    "CI",
+    "DATABASE_NAME",
+    "DATABASE_USERNAME",
+    "DATABASE_PASSWORD",
+    "DATABASE_URL",
+    "GOOGLE_CLIENT_ID",
+    "GOOGLE_CLIENT_SECRET",
+    "NEXTAUTH_SECRET",
+    "NEXTAUTH_URL",
+    "NODE_ENV",
+    "SKIP_ENV_VALIDATION",
+    "VERCEL",
+    "VERCEL_URL"
+  ]
+}

@@ -1,0 +1,79 @@
+name: CI
+
+on:
+  pull_request:
+    branches: ['*']
+  push:
+    branches: ['main']
+  merge_group:
+
+env:
+  DATABASE_URL: 'postgresql://postgres:postgres@localhost:5432/postgres'
+  TURBO_TOKEN: turbotoken-oss-europe1
+  TURBO_TEAM: team_informatyzacjapwr
+
+jobs:
+  build-lint:
+    name: Web build and lint
+    runs-on: ubuntu-latest
+    services:
+      postgres:
+        image: postgres:15
+        env:
+          POSTGRES_PASSWORD: postgres
+          POSTGRES_USER: postgres
+          POSTGRES_DB: postgres
+        ports:
+          - 5432:5432
+        options: --health-cmd pg_isready --health-interval 10s --health-timeout 5s --health-retries 5
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v3
+
+      - name: Setup Node 16
+        uses: actions/setup-node@v3
+        with:
+          node-version: 16
+
+      - uses: bahmutov/npm-install@v1
+      - name: Generate Prisma Client
+        run: npx turbo db:generate
+
+      - name: Build, lint and type-check
+        run: npx turbo build lint type-check
+        env:
+          SKIP_ENV_VALIDATION: true
+  build-android:
+    name: Android build
+    runs-on: ubuntu-latest
+    steps:
+      - name: 🏗 Setup repo
+        uses: actions/checkout@v2
+
+      - name: Setup Node 16
+        uses: actions/setup-node@v3
+        with:
+          node-version: 16
+
+      - name: 🏗 Setup Expo and EAS
+        uses: expo/expo-github-action@v7
+        with:
+          token: ${{ secrets.EXPO_TOKEN }}
+          expo-version: latest
+          eas-version: latest
+          packager: npm
+
+      - name: Install dependencies
+        uses: bahmutov/npm-install@v1
+
+      - name: 🏗 Setup EAS local builds
+        run: npm i -G eas-cli-local-build-plugin
+
+      - name: 👷 Build app
+        run: npm run build:android
+
+      - name: 📱 Upload binary
+        uses: actions/upload-artifact@v2
+        with:
+          name: app-android
+          path: apps/expo/android-build.apk

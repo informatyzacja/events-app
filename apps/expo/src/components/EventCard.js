@@ -1,11 +1,12 @@
-import { StyleSheet } from "react-native";
-import { Card, Text, TouchableRipple } from "react-native-paper";
+import { StyleSheet } from 'react-native';
+import { Card, Text, TouchableRipple } from 'react-native-paper';
+
 const EventCard = ({ item, navigation }) => {
   //TODO: Switch in later version from fake api call to AsyncStorage Call
   // const navigation = useNavigation();
   return (
     <TouchableRipple
-      onPress={() => navigation.navigate("EventDetails", item)}
+      onPress={() => navigation.navigate('EventDetails', item)}
       rippleColor="rgba(0, 0, 0, .32)"
     >
       <Card mode="elevated" style={styles.eventCard}>
@@ -17,7 +18,7 @@ const EventCard = ({ item, navigation }) => {
           subtitleVariant="titleSmall"
         />
         <Card.Content>
-          <Text>{item.description} </Text>
+          <Text>{item.description}</Text>
         </Card.Content>
       </Card>
     </TouchableRipple>
@@ -26,7 +27,7 @@ const EventCard = ({ item, navigation }) => {
 const styles = StyleSheet.create({
   eventCard: {
     margin: 13,
-    backgroundColor: "white",
+    backgroundColor: 'white',
   },
 });
 export default EventCard;

@@ -1,0 +1,32 @@
+name: Cleanup Preview Deployments
+on:
+  pull_request:
+    types:
+      - closed
+
+jobs:
+  update:
+    name: Cleanup Preview Channel and Branch
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Setup Node 16
+        uses: actions/setup-node@v3
+        with:
+          node-version: 16
+      - uses: bahmutov/npm-install@v1
+
+      - name: Setup Expo
+        uses: expo/expo-github-action@v7
+        with:
+          expo-version: latest
+          eas-version: latest
+          token: ${{ secrets.EXPO_TOKEN }}
+
+      - name: Delete Channel
+        run: eas channel:delete ${{ github.head_ref }} --non-interactive
+
+      - name: Delete Branch
+        run: eas branch:delete ${{ github.head_ref }} --non-interactive
