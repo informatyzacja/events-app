@@ -33,6 +33,7 @@ jobs:
 
       - name: 👷 Build app
         run: |
+          cd apps/expo
           eas build --local \
             --non-interactive \
             --output=./app-build \
