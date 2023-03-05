@@ -15,12 +15,12 @@
     "@informatyzacja/db": "*",
     "@trpc/client": "^10.12.0",
     "@trpc/server": "^10.12.0",
-    "superjson": "1.12.2",
+    "superjson": "^1.12.2",
     "zod": "^3.20.6"
   },
   "devDependencies": {
     "eslint": "^8.34.0",
-    "eslint-config-informatyzacja": "0.0.0",
+    "eslint-config-informatyzacja": "*",
     "typescript": "^4.9.5"
   }
 }

@@ -6,10 +6,9 @@
   "license": "UNLICENSED",
   "scripts": {
     "clean": "rm -rf .turbo node_modules",
-    "db:generate": "yarn with-env prisma generate",
-    "db:push": "yarn with-env prisma db push --skip-generate",
-    "dev": "yarn with-env prisma studio --port 5556",
-    "with-env": "dotenv -e ../../.env --"
+    "db:generate": "prisma generate",
+    "db:push": "prisma db push --skip-generate",
+    "dev": "docker compose -f docker-compose.dev.yml up --force-recreate -V"
   },
   "dependencies": {
     "@prisma/client": "^4.10.1"

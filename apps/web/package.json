@@ -3,14 +3,13 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "build": "yarn with-env next build",
+    "build": "next build",
     "clean": "rm -rf .next .turbo node_modules",
-    "dev": "yarn with-env next dev",
-    "lint": "yarn with-env next lint",
-    "lint:fix": "yarn lint --fix",
+    "dev": "next dev",
+    "lint": "next lint",
+    "lint:fix": "npm run lint --fix",
     "start": "next start",
-    "type-check": "tsc --noEmit",
-    "with-env": "dotenv -e ../../.env --"
+    "type-check": "tsc --noEmit"
   },
   "dependencies": {
     "@chakra-ui/icons": "^2.0.17",
@@ -27,10 +26,10 @@
     "@trpc/server": "^10.12.0",
     "framer-motion": "^10.0.0",
     "jotai": "^2.0.2",
-    "next": "13.2.1",
+    "next": "^13.2.1",
     "next-auth": "^4.19.2",
-    "react": "18.2.0",
-    "react-dom": "18.2.0",
+    "react": "18.1.0",
+    "react-dom": "18.1.0",
     "react-icons": "^4.7.1",
     "superjson": "^1.12.2",
     "zod": "^3.20.6"
@@ -43,7 +42,7 @@
     "@typescript-eslint/eslint-plugin": "^5.53.0",
     "@typescript-eslint/parser": "^5.53.0",
     "eslint": "^8.34.0",
-    "eslint-config-informatyzacja": "0.0.0",
+    "eslint-config-informatyzacja": "*",
     "prisma": "^4.10.1",
     "typescript": "^4.9.5"
   },

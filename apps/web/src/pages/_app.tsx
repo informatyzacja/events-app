@@ -2,10 +2,10 @@ import { type AppType } from "next/app";
 import { type Session } from "next-auth";
 import { SessionProvider } from "next-auth/react";
 
-import { api } from "~/utils/api";
-import { theme } from "~/styles/theme";
+import { api } from "@/utils/api";
+import { theme } from "@/styles/theme";
 import { ChakraProvider } from "@chakra-ui/react";
-import { Layout } from "~/components/Layout";
+import { Layout } from "@/components/Layout";
 import Head from "next/head";
 
 const MyApp: AppType<{ session: Session | null }> = ({

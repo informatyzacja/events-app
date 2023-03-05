@@ -1,16 +1,15 @@
+import { authOptions } from './authOptions';
 import type {
   GetServerSidePropsContext,
   NextApiRequest,
   NextApiResponse,
-} from "next";
-import { getServerSession as $getServerSession } from "next-auth";
-
-import { authOptions } from "./auth-options";
+} from 'next';
+import { getServerSession as $getServerSession } from 'next-auth';
 
 type GetServerSessionContext =
   | {
-      req: GetServerSidePropsContext["req"];
-      res: GetServerSidePropsContext["res"];
+      req: GetServerSidePropsContext['req'];
+      res: GetServerSidePropsContext['res'];
     }
   | { req: NextApiRequest; res: NextApiResponse };
 export const getServerSession = (ctx: GetServerSessionContext) => {
