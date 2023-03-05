@@ -1,6 +1,7 @@
-import { TouchableHighlight } from "react-native";
-import { Avatar } from "react-native-paper";
-import theme from "../theme";
+import theme from '../theme';
+import { TouchableHighlight } from 'react-native';
+import { Avatar } from 'react-native-paper';
+
 const SubscribeButton = ({ icon, onPress }) => {
   return (
     <TouchableHighlight
@@ -10,9 +11,11 @@ const SubscribeButton = ({ icon, onPress }) => {
     >
       <Avatar.Icon
         icon={icon}
-        backgroundColor={"transparent"}
+        style={{
+          backgroundColor: 'transparent',
+        }}
         color={theme.colors.onSurface}
-        alignSelf={"center"}
+        alignSelf={'center'}
       />
     </TouchableHighlight>
   );
