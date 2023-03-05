@@ -9,6 +9,7 @@ on:
 
 jobs:
   build-lint:
+    name: Web build and lint
     runs-on: ubuntu-latest
     services:
       postgres:
@@ -39,3 +40,79 @@ jobs:
         run: npx turbo build lint type-check
         env:
           SKIP_ENV_VALIDATION: true
+  build-android:
+    name: Android build
+    runs-on: ubuntu-latest
+    steps:
+      - name: 🏗 Setup repo
+        uses: actions/checkout@v2
+
+      - name: Setup Node 16
+        uses: actions/setup-node@v3
+        with:
+          node-version: 16
+
+      - name: 🏗 Setup Expo and EAS
+        uses: expo/expo-github-action@v7
+        with:
+          token: ${{ secrets.EXPO_TOKEN }}
+          expo-version: latest
+          eas-version: latest
+          packager: npm
+
+      - name: 🏗 Setup EAS local builds
+        run: npm i -G eas-cli-local-build-plugin
+
+      - uses: bahmutov/npm-install@v1
+
+      - name: 👷 Build app
+        run: |
+          cd apps/expo
+          eas build --local \
+            --non-interactive \
+            --output=./app-build \
+            --platform=android
+
+      - name: 📱 Upload binary
+        uses: actions/upload-artifact@v2
+        with:
+          name: app-android
+          path: app-build
+  build-ios:
+    name: IOS build
+    runs-on: macos-latest
+    steps:
+      - name: 🏗 Setup repo
+        uses: actions/checkout@v2
+
+      - name: Setup Node 16
+        uses: actions/setup-node@v3
+        with:
+          node-version: 16
+
+      - name: 🏗 Setup Expo and EAS
+        uses: expo/expo-github-action@v7
+        with:
+          token: ${{ secrets.EXPO_TOKEN }}
+          expo-version: latest
+          eas-version: latest
+          packager: npm
+
+      - name: 🏗 Setup EAS local builds
+        run: npm i -G eas-cli-local-build-plugin
+
+      - uses: bahmutov/npm-install@v1
+
+      - name: 👷 Build app
+        run: |
+          cd apps/expo
+          eas build --local \
+            --non-interactive \
+            --output=./app-build \
+            --platform=ios
+
+      - name: 📱 Upload binary
+        uses: actions/upload-artifact@v2
+        with:
+          name: app-ios
+          path: app-build
