@@ -79,4 +79,4 @@ jobs:
         uses: actions/upload-artifact@v2
         with:
           name: app-android
-          path: app-build
+          path: apps/expo/app-build
