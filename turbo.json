@@ -28,7 +28,7 @@
         "app.json",
         "eas.json"
       ],
-      "outputs": ["app-build"]
+      "outputs": ["android-build.apk"]
     },
     "lint": {
       "inputs": ["**/*.ts", "**/*.tsx", "**/*.js", "**/*.jsx"]

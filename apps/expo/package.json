@@ -8,7 +8,7 @@
     "android": "expo start --android",
     "clean": "rm -rf node_modules",
     "ios": "expo start --ios",
-    "build:android": "eas build --local --non-interactive --output=./app-build --platform=android --profile=preview",
+    "build:android": "eas build --local --non-interactive --output=./android-build.apk --platform=android --profile=preview",
     "build:ios": "eas build --local --platform ios",
     "web": "expo start --web"
   },
