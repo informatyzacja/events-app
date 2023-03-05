@@ -19,6 +19,17 @@
       "dependsOn": ["^build", "^db:generate"],
       "outputs": [".next/**", ".expo/**"]
     },
+    "build:android": {
+      "inputs": [
+        "**/*.ts",
+        "**/*.tsx",
+        "**/*.js",
+        "**/*.jsx",
+        "app.json",
+        "eas.json"
+      ],
+      "outputs": ["app-build/**"]
+    },
     "lint": {
       "inputs": ["**/*.ts", "**/*.tsx", "**/*.js", "**/*.jsx"]
     },

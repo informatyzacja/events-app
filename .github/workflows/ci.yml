@@ -69,13 +69,7 @@ jobs:
         run: npm i -G eas-cli-local-build-plugin
 
       - name: 👷 Build app
-        run: |
-          cd apps/expo
-          eas build --local \
-            --non-interactive \
-            --output=./app-build \
-            --platform=android \
-            --profile=preview
+        run: npm run build:android
 
       - name: 📱 Upload binary
         uses: actions/upload-artifact@v2
