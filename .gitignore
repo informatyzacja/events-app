@@ -45,7 +45,12 @@ yarn-error.log*
 *.tsbuildinfo
 
 # turbo
-.turbo
+
+.turbo/*
+!.turbo/
+**/.turbo/*
+!.turbo/config.json
 
 # uploaded files
 apps/next/upload
+.turbo
