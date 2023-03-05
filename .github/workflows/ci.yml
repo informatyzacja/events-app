@@ -7,6 +7,11 @@ on:
     branches: ['main']
   merge_group:
 
+env:
+  DATABASE_URL: 'postgresql://postgres:postgres@localhost:5432/postgres'
+  TURBO_TOKEN: turbotoken-oss-europe1
+  TURBO_TEAM: team_informatyzacjapwr
+
 jobs:
   build-lint:
     name: Web build and lint
@@ -21,10 +26,6 @@ jobs:
         ports:
           - 5432:5432
         options: --health-cmd pg_isready --health-interval 10s --health-timeout 5s --health-retries 5
-    env:
-      DATABASE_URL: 'postgresql://postgres:postgres@localhost:5432/postgres'
-      TURBO_TOKEN: turbotoken-oss-europe1
-      TURBO_TEAM: team_informatyzacjapwr
     steps:
       - name: Checkout repo
         uses: actions/checkout@v3
