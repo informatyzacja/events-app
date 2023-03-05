@@ -17,6 +17,7 @@ const config = {
       rootDir: ['apps/web'],
     },
   },
+  ignorePatterns: ['apps/expo'],
 };
 
 module.exports = config;
