@@ -3,12 +3,10 @@
   "globalDependencies": ["**/.env"],
   "pipeline": {
     "db:generate": {
-      "inputs": ["prisma/schema.prisma"],
-      "cache": false
+      "inputs": ["prisma/schema.prisma"]
     },
     "db:push": {
-      "inputs": ["prisma/schema.prisma"],
-      "cache": false
+      "inputs": ["prisma/schema.prisma"]
     },
     "dev": {
       "dependsOn": ["^db:generate"],
@@ -32,8 +30,7 @@
       "cache": false
     },
     "type-check": {
-      "dependsOn": ["^db:generate"],
-      "cache": false
+      "dependsOn": ["^db:generate"]
     }
   },
   "globalEnv": [

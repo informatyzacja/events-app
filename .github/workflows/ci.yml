@@ -24,6 +24,7 @@ jobs:
     env:
       DATABASE_URL: 'postgresql://postgres:postgres@localhost:5432/postgres'
       TURBO_TOKEN: turbotoken-oss-europe1
+      TURBO_TEAM: team_informatyzacjapwr
     steps:
       - name: Checkout repo
         uses: actions/checkout@v3
