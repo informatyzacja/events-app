@@ -28,7 +28,7 @@
         "app.json",
         "eas.json"
       ],
-      "outputs": ["app-build/**"]
+      "outputs": ["app-build"]
     },
     "lint": {
       "inputs": ["**/*.ts", "**/*.tsx", "**/*.js", "**/*.jsx"]
