@@ -12,17 +12,18 @@
     },
     "dev": {
       "persistent": true,
-      "cache": false,
-      "env": ["PORT"]
+      "cache": false
     },
     "build": {
       "dependsOn": ["^build", "^db:generate"],
       "outputs": [".next/**", ".expo/**"]
     },
     "lint": {
-      "env": ["PORT"]
+      "inputs": ["**/*.ts", "**/*.tsx", "**/*.js", "**/*.jsx"]
     },
-    "lint:fix": {},
+    "lint:fix": {
+      "inputs": ["**/*.ts", "**/*.tsx", "**/*.js", "**/*.jsx"]
+    },
     "clean": {
       "cache": false
     },
