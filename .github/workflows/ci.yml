@@ -7,6 +7,10 @@ on:
     branches: ['main']
   merge_group:
 
+concurrency:
+  group: ${{ github.head_ref || github.ref_name }}
+  cancel-in-progress: true
+
 jobs:
   build-lint:
     name: Web build and lint

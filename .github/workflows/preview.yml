@@ -1,6 +1,10 @@
 name: Preview
 on: pull_request
 
+concurrency:
+  group: ${{ github.head_ref || github.ref_name }}
+  cancel-in-progress: true
+
 jobs:
   update:
     name: Expo Go preview
