@@ -18,7 +18,7 @@ const EventCard = ({ item, navigation }) => {
           subtitleVariant="titleSmall"
         />
         <Card.Content>
-          <Text>{item.description} hello!</Text>
+          <Text>{item.description}</Text>
         </Card.Content>
       </Card>
     </TouchableRipple>
