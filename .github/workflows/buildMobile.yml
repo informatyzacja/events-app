@@ -13,10 +13,10 @@ jobs:
       - name: 🏗 Setup repo
         uses: actions/checkout@v2
 
-      - name: Setup Node 18
+      - name: Setup Node 16
         uses: actions/setup-node@v3
         with:
-          node-version: 18
+          node-version: 16
 
       - name: 🏗 Setup Expo and EAS
         uses: expo/expo-github-action@v7

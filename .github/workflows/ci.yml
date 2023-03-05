@@ -7,7 +7,6 @@ on:
     branches: ['main']
   merge_group:
 
-
 jobs:
   build-lint:
     runs-on: ubuntu-latest
@@ -27,10 +26,10 @@ jobs:
       - name: Checkout repo
         uses: actions/checkout@v3
 
-      - name: Setup Node 18
+      - name: Setup Node 16
         uses: actions/setup-node@v3
         with:
-          node-version: 18
+          node-version: 16
 
       - uses: bahmutov/npm-install@v1
       - name: Generate Prisma Client
