@@ -12,13 +12,16 @@
     },
     "dev": {
       "persistent": true,
-      "cache": false
+      "cache": false,
+      "env": ["PORT"]
     },
     "build": {
       "dependsOn": ["^build", "^db:generate"],
       "outputs": [".next/**", ".expo/**"]
     },
-    "lint": {},
+    "lint": {
+      "env": ["PORT"]
+    },
     "lint:fix": {},
     "clean": {
       "cache": false
