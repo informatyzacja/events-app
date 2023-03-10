@@ -4,6 +4,8 @@ import { useAtom } from 'jotai';
 
 // TODO: Add iteration on
 const scheduleNotification = async (event) => {
+  const trigger = new Date(event.startDate);
+  trigger.setMinutes(trigger.getMinutes() - 15);
   const id = await Notifications.scheduleNotificationAsync({
     content: {
       title: event.name,
@@ -12,11 +14,8 @@ const scheduleNotification = async (event) => {
       priority: Notifications.AndroidNotificationPriority.HIGH,
       color: 'blue',
     },
-    trigger: {
-      seconds: 10,
-    }, //new Date(event.time), // TODO: Need to investigate further why after passing date in format YYYY-MM-DDTHH:MM:SS:mSmSZ it doesnt pop up notifications
+    trigger,
   });
-  console.log(`Here it is in good format ${id}`);
   return id;
 };
 
@@ -28,10 +27,13 @@ export const useSubscribedEvents = () => {
   const [subscribedEvents, setSubscribedEvents] = useAtom(subscribedEventsAtom);
 
   const subscribe = (event) => {
-    const id = scheduleNotification(event);
-    console.log(`Here should it remain in the same format ${id}`);
+    scheduleNotification(event).then((result) => {
+      event.notificationId = result;
+    });
     event.subEvents.map((subEvent) => {
-      scheduleNotification(subEvent);
+      scheduleNotification(subEvent).then((result) => {
+        subEvent.notificationId = result;
+      });
     });
     const newSubscribedEvents = [...subscribedEvents, event];
     setSubscribedEvents(newSubscribedEvents);

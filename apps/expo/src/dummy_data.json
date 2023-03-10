@@ -5,35 +5,35 @@
     "banerURL": "https://picsum.photos/100/100",
     "description": "example description example descriptionexample descriptionexample descriptionexample descriptionexample description",
     "place": "C-13",
-    "startDate": "2023-08-10",
-    "endDate": "2023-08-11",
+    "startDate": "2023-08-10T00:00:00Z",
+    "endDate": "2023-08-11T00:00:00Z",
     "subEvents": [
       {
         "id": 1,
         "name": "example subevent1",
         "place": "Przystań piracka",
-        "startDate": "2023-08-10T10:13:00Z",
+        "startDate": "2023-08-10T15:23:00Z",
         "endDate": "2023-08-11T14:20:00Z"
       },
       {
         "id": 2,
         "name": "example subevent2",
         "place": "karczma",
-        "startDate": "2023-08-10T10:14:00Z",
+        "startDate": "2023-08-10T15:25:00Z",
         "endDate": "2023-08-11T14:20:00Z"
       },
       {
         "id": 3,
         "name": "example subevent2",
         "place": "karczma",
-        "startDate": "2023-08-10T10:15:00Z",
+        "startDate": "2023-08-10T15:25:00Z",
         "endDate": "2023-08-11T14:20:00Z"
       },
       {
         "id": 4,
         "name": "example subevent2",
         "place": "karczma",
-        "startDate": "2023-08-10T13:32:00Z",
+        "startDate": "2023-08-10T15:25:00Z",
         "endDate": "2023-08-11T14:20:00Z"
       }
     ]
@@ -44,8 +44,8 @@
     "banerURL": "https://picsum.photos/100/100",
     "description": "example description v2",
     "place": "C-13",
-    "startDate": "2023-08-10",
-    "endDate": "2023-08-11",
+    "startDate": "2023-08-10T00:00:00Z",
+    "endDate": "2023-08-11T00:00:00Z",
     "subEvents": [
       {
         "id": 3,
@@ -69,8 +69,8 @@
     "banerURL": "https://picsum.photos/100/100",
     "description": "example description",
     "place": "C-13",
-    "startDate": "2023-08-10",
-    "endDate": "2023-08-11",
+    "startDate": "2023-08-10T00:00:00Z",
+    "endDate": "2023-08-11T00:00:00Z",
     "subEvents": [
       {
         "id": 1,
@@ -94,8 +94,8 @@
     "banerURL": "https://picsum.photos/100/100",
     "description": "example description",
     "place": "C-13",
-    "startDate": "2023-08-10",
-    "endDate": "2023-08-11",
+    "startDate": "2023-08-10T00:00:00Z",
+    "endDate": "2023-08-11T00:00:00Z",
     "subEvents": [
       {
         "id": 1,
@@ -108,8 +108,8 @@
         "id": 2,
         "name": "example subevent2",
         "place": "karczma",
-        "startDate": "2023-08-10 13:32:00",
-        "endDate": "2023-08-11 14:20:00"
+        "startDate": "2023-08-10T13:32:00Z",
+        "endDate": "2023-08-11T14:20:00Z"
       }
     ]
   }
