@@ -1,9 +1,10 @@
 import { subscribedEventsAtom } from '../atoms/subscribedEvents';
-import { useAtom } from 'jotai';
 import * as Notifications from 'expo-notifications';
+import { useAtom } from 'jotai';
+
 // TODO: Add iteration on
-const scheduleNotification = async (event) =>
-  await Notifications.scheduleNotificationAsync({
+const scheduleNotification = async (event) => {
+  const id = await Notifications.scheduleNotificationAsync({
     content: {
       title: event.name,
       body: `Masz wydarzenie odbywające się w miejscu: ${event.place}`,
@@ -11,8 +12,13 @@ const scheduleNotification = async (event) =>
       priority: Notifications.AndroidNotificationPriority.HIGH,
       color: 'blue',
     },
-    trigger: new Date(event.time), // TODO: change body of dummy_data to see if it works properly
+    trigger: {
+      seconds: 10,
+    }, //new Date(event.time), // TODO: Need to investigate further why after passing date in format YYYY-MM-DDTHH:MM:SS:mSmSZ it doesnt pop up notifications
   });
+  console.log(`Here it is in good format ${id}`);
+  return id;
+};
 
 const removeNotification = async (event) => {
   await Notifications.cancelScheduledNotificationAsync(event.notificationId);
@@ -22,11 +28,10 @@ export const useSubscribedEvents = () => {
   const [subscribedEvents, setSubscribedEvents] = useAtom(subscribedEventsAtom);
 
   const subscribe = (event) => {
-    const notificationId = scheduleNotification(event);
-    event.notificationId = notificationId;
+    const id = scheduleNotification(event);
+    console.log(`Here should it remain in the same format ${id}`);
     event.subEvents.map((subEvent) => {
-      const subEventNotificationId = scheduleNotification(subEvent);
-      subEvent.notificationId = subEventNotificationId;
+      scheduleNotification(subEvent);
     });
     const newSubscribedEvents = [...subscribedEvents, event];
     setSubscribedEvents(newSubscribedEvents);

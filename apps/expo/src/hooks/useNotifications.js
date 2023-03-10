@@ -1,7 +1,7 @@
 import * as Notifications from 'expo-notifications';
 import { useEffect } from 'react';
 
-const useNotifications = () => {
+export const useNotifications = () => {
   // for acquiring permissions to use both on android and IOS
   const handleNotification = () => {
     console.warn('ok! got your notif');

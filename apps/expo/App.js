@@ -1,15 +1,16 @@
-import { AppRegistry, SafeAreaView } from 'react-native';
-import { Provider as PaperProvider } from 'react-native-paper';
-import { NavigationContainer } from '@react-navigation/native';
 import { name as appName } from './app.json';
-import theme from './src/theme';
-import { StyleSheet } from 'react-native';
+import { useNotifications } from './src/hooks/useNotifications';
+import { useOnlineManager } from './src/hooks/useOnlineManager';
 import Navbar from './src/routes/Navbar';
+import theme from './src/theme';
+import AsyncStorage from '@react-native-async-storage/async-storage';
+import { NavigationContainer } from '@react-navigation/native';
+import { createAsyncStoragePersister } from '@tanstack/query-async-storage-persister';
 import { QueryClient } from '@tanstack/react-query';
 import { PersistQueryClientProvider } from '@tanstack/react-query-persist-client';
-import { createAsyncStoragePersister } from '@tanstack/query-async-storage-persister';
-import AsyncStorage from '@react-native-async-storage/async-storage';
-import { useOnlineManager } from './src/hooks/useOnlineManager';
+import { AppRegistry, SafeAreaView } from 'react-native';
+import { StyleSheet } from 'react-native';
+import { Provider as PaperProvider } from 'react-native-paper';
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -24,7 +25,7 @@ const asyncStoragePersister = createAsyncStoragePersister({
 });
 export default function Main() {
   useOnlineManager();
-
+  useNotifications();
   return (
     <PersistQueryClientProvider
       client={queryClient}
